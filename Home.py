@@ -2,37 +2,34 @@ import streamlit as st
 
 st.set_page_config(
     page_title="My Portfolio",
+    page_icon="🌐",
     layout="wide"
 )
 
-# Sidebar
-st.sidebar.title("Navigation")
-
-page = st.sidebar.radio(
-    "Go to",
-    ["Home", "About", "Projects", "Contact"]
-)
-
-# Homepage Content
 st.title("Welcome to My Portfolio Website")
 
 st.write("""
 Hello! I am a student learning Streamlit and Python.
+
+This website contains information about me, my projects,
+skills, and contact details.
 """)
 
-# Dynamic Content
-if page == "Home":
-    st.header("Home Page")
-    st.write("This is the homepage.")
+col1, col2 = st.columns(2)
 
-elif page == "About":
-    st.header("About Me")
-    st.write("I love coding and building projects.")
+with col1:
+    st.header("Features")
+    st.write("""
+    - Multipage navigation
+    - Interactive inputs
+    - Clean UI design
+    - Personal portfolio
+    """)
 
-elif page == "Projects":
-    st.header("My Projects")
-    st.write("Here are some of my projects.")
+with col2:
+    st.header("Quick Interaction")
 
-elif page == "Contact":
-    st.header("Contact")
-    st.write("You can contact me here.")
+    name = st.text_input("Enter your name")
+
+    if st.button("Greet Me"):
+        st.success(f"Welcome to my website, {name}!")
